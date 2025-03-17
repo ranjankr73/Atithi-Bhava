@@ -1,34 +1,54 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom'
 
 const Hero = () => {
   return (
-    <div className='h-auto py-24 flex justify-evenly items-center'>
-        <div className=''>
-            <div className='font-bold flex flex-col text-5xl gap-6 montserrat-heading'>
-                <span className='text-[#2D3436]'>Plan</span>
-                <span className='text-[#2D3436]'>
-                    <span className='text-[#F83B3B]'>Unforgettable </span> 
-                    Events
-                </span>
-                <span className='text-[#2D9596]'>Effortlessly.</span>
+    <section className="bg-primary/10 py-24 md:py-24 lg:py-32">
+      <div className="container mx-auto px-4 md:px-8">
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="space-y-8">
+            <h1 className="font-montserrat text-4xl md:text-5xl lg:text-6xl font-bold text-dark space-y-6">
+              <div className="leading-tight">
+                Plan{' '}
+                <span className="text-accent block mt-4 md:mt-6">Unforgettable</span>
+                <span className="block">Events</span>
+              </div>
+              <span className="block text-secondary mt-8 md:mt-12">Effortlessly</span>
+            </h1>
+            
+            <p className="font-open-sans text-lg md:text-xl text-dark/80 mt-8">
+              Create, manage, and perfect your events with our all-in-one platform
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 mt-12">
+              <NavLink
+                to="/signup"
+                className="px-8 py-4 bg-accent text-white rounded-full hover:bg-accent/90 transition-colors font-semibold"
+              >
+                Start Free Trial
+              </NavLink>
+              <NavLink
+                to="/demo"
+                className="px-8 py-4 bg-dark text-white rounded-full hover:bg-dark/90 transition-colors font-semibold flex items-center gap-2"
+              >
+                Watch Demo
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M16.7 9.3l-5-5c-.4-.4-1-.4-1.4 0s-.4 1 0 1.4l3.3 3.3H2c-.6 0-1 .4-1 1s.4 1 1 1h11.6l-3.3 3.3c-.4.4-.4 1 0 1.4.2.2.5.3.7.3s.5-.1.7-.3l5-5c.4-.4.4-1 0-1.4z"/>
+                </svg>
+              </NavLink>
             </div>
-            <div className='open-sans-body text-base my-8 text-[#516569]'>
-                <p>Create, invite, and manage guests in one place—</p> 
-                <p>so you can focus on celebrating.</p>
-            </div>
-            <div className='my-16 flex justify-start gap-5 text-base font-semibold'>
-                <NavLink to='signin' className='w-44 h-12 rounded-full bg-[#FF6B6B] hover:bg-[#FFA0A0] text-[#2D3436] shadow-lg flex justify-center items-center cursor-pointer'>Start Planning Free</NavLink>
-                <NavLink to='demo' className='w-44 h-12 rounded-full bg-[#2D3436] hover:bg-[#3E4A4C] text-[#FF6B6B] hover:text-[#F83B3B] shadow-lg flex justify-center items-center gap-1 cursor-pointer'>Watch Demo <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-6">
-                    <path fillRule="evenodd" d="M16.72 7.72a.75.75 0 0 1 1.06 0l3.75 3.75a.75.75 0 0 1 0 1.06l-3.75 3.75a.75.75 0 1 1-1.06-1.06l2.47-2.47H3a.75.75 0 0 1 0-1.5h16.19l-2.47-2.47a.75.75 0 0 1 0-1.06Z" clipRule="evenodd" />
-                    </svg>
-                </NavLink>
-            </div>
+          </div>
+          
+          <div className="relative">
+            <img 
+              src="\images\Neatly Organized Desk Setup_processed.png" 
+              alt="Event management dashboard"
+              className="rounded-xl w-full"
+            />
+          </div>
         </div>
-        <div className='w-96'>
-            <img src='\images\Neatly Organized Desk Setup.png'/>
-        </div>
-    </div>
+      </div>
+    </section>
   )
 }
 
