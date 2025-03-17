@@ -1,10 +1,32 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
+import React, { useState } from 'react'
+import { NavLink, useNavigate } from 'react-router-dom'
+import toast from 'react-hot-toast';
+import api from '../config/axiosConfig';
 
 const Signin = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault()
-    // Add login logic
+    
+    const toastId = toast.loading("Processing...");
+
+    try {
+      const response = await api.post('/user/signin', { email, password });
+
+      if(response.status === 200){
+        setEmail("");
+        setPassword("");
+        toast.dismiss(toastId);
+        toast.success(response.data.message);
+        navigate('/dashboard');
+      }
+    } catch (error) {
+      toast.dismiss(toastId);
+      toast.error(error.response.data.message);
+    }
   }
 
   return (
@@ -39,6 +61,8 @@ const Signin = () => {
                   <input
                     type="email"
                     placeholder="johndoe@example.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     className="w-full px-6 py-3 rounded-full border border-gray-200 focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all"
                   />
                 </div>
@@ -50,6 +74,8 @@ const Signin = () => {
                   <input
                     type="password"
                     placeholder="********"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     className="w-full px-6 py-3 rounded-full border border-gray-200 focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all"
                   />
                 </div>

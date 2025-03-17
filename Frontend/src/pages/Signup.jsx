@@ -1,11 +1,35 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
+import React, { useState } from 'react'
+import { NavLink, useNavigate } from 'react-router-dom'
+import api from '../config/axiosConfig';
+import toast from 'react-hot-toast';
 
 const Signup = () => {
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    
-  }
+    e.preventDefault();
+  
+    const toastId = toast.loading("Processing...");
+    try {
+      const response = await api.post('/user/signup', { fullName, email, password });
+      
+      if(response.status === 201){
+        setFullName("");
+        setEmail("");
+        setPassword("");
+        toast.dismiss(toastId);
+        toast.success(response.data.message);
+        navigate('/dashboard');
+      }
+    } catch (error) {
+      toast.dismiss(toastId);
+      toast.error(error.response.data.message);
+    }
+  };
 
   return (
     <section className="min-h-screen bg-primary/5 py-12 md:py-16 lg:py-20">
@@ -39,6 +63,8 @@ const Signup = () => {
                   <input
                     type="text"
                     placeholder="John Doe"
+                    value={fullName}
+                    onChange={(e) => setFullName(e.target.value)}
                     className="w-full px-6 py-3 rounded-full border border-gray-200 focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all"
                   />
                 </div>
@@ -50,6 +76,8 @@ const Signup = () => {
                   <input
                     type="email"
                     placeholder="johndoe@example.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     className="w-full px-6 py-3 rounded-full border border-gray-200 focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all"
                   />
                 </div>
@@ -61,6 +89,8 @@ const Signup = () => {
                   <input
                     type="password"
                     placeholder="********"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     className="w-full px-6 py-3 rounded-full border border-gray-200 focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all"
                   />
                 </div>
