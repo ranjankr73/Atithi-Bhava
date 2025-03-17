@@ -1,11 +1,7 @@
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
-    firstName: {
-        type: String,
-        required: true,
-    },
-    lastName: {
+    fullName: {
         type: String,
         required: true,
     },
@@ -21,7 +17,10 @@ const userSchema = new mongoose.Schema({
     organizedEvents: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Event'
-    }]
+    }],
+    refreshToken: {
+        type: String
+    }
 }, { timestamps: true });
 
 module.exports = mongoose.model('user', userSchema);
