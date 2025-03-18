@@ -7,6 +7,7 @@ import Landing from "../layout/Landing";
 import Signup from "../pages/Signup";
 import Signin from "../pages/Signin";
 import Dashboard from "../pages/Dashboard";
+import PrivacyPolicy from "../pages/PrivacyPolicy";
 
 export const RouterProvider = () => {
     return(
@@ -18,6 +19,7 @@ export const RouterProvider = () => {
                     <Route path="services" element={<Services/>}/>
                     <Route path="contact" element={<Contact/>}/>
                 </Route>
+                <Route path="privacy" element={<PrivacyPolicy/>}/>
                 <Route path="signup" element={<Signup/>}/>
                 <Route path="signin" element={<Signin/>}/>
                 <Route path="dashboard" element={<Dashboard/>}/>

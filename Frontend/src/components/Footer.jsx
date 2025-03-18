@@ -76,7 +76,7 @@ const Footer = () => {
         <div className="grid md:grid-cols-4 gap-8 lg:gap-12">
           {/* Brand Column */}
           <div className="md:col-span-1 space-y-6">
-            <NavLink to="/" className="flex items-center gap-2 group">
+            <NavLink to="/" className="flex items-center group">
               <span className="text-3xl font-bold text-dark font-montserrat tracking-tight">
                 atithi
               </span>

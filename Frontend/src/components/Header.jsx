@@ -18,12 +18,12 @@ const Header = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <NavLink to="/" className="flex items-center gap-2 group">
+          <NavLink to="/" className="flex items-center group">
             <span className="text-3xl font-bold text-primary font-montserrat tracking-tight">
               atithi
             </span>
             <span className="text-3xl font-bold text-accent font-montserrat tracking-tight group-hover:text-primary transition-colors">
-              bhava
+             bhava
             </span>
           </NavLink>
 
